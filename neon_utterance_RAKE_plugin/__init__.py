@@ -36,8 +36,9 @@ class RAKETagger(UtteranceTransformer):
     def __init__(self, name="keyword_tagger", priority=99):
         super().__init__(name, priority)
 
-    def transform(self, utterances, lang="en-us"):
+    def transform(self, utterances, context=None):
         keywords = []
+        lang = context.get("lang", "en-us")
         for utterance in utterances:
             # extract keywords
             rake = Rake(lang)
@@ -45,10 +46,4 @@ class RAKETagger(UtteranceTransformer):
 
         # return unchanged utterances + data
         return utterances, {"keywords": keywords}
-
-
-def create_module():
-    return EntityTagger()
-
-
 
