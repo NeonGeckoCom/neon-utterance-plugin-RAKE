@@ -40,5 +40,5 @@ class RAKETagger(UtteranceTransformer):
             keywords += rake.extract_keywords(utterance)
 
         # return unchanged utterances + data
-        return utterances, {"keywords": keywords}
+        return utterances, {"rake_keywords": keywords}
 
