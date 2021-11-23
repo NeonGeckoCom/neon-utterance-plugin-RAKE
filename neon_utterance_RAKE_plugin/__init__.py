@@ -32,6 +32,7 @@ class RAKETagger(UtteranceTransformer):
 
     def transform(self, utterances, context=None):
         keywords = []
+        context = context or {}
         lang = context.get("lang", "en-us")
         for utterance in utterances:
             # extract keywords
