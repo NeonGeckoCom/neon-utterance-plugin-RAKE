@@ -33,7 +33,7 @@ from neon_transformers import UtteranceTransformer
 
 
 class RAKETagger(UtteranceTransformer):
-    def __init__(self, name="keyword_tagger", priority=99):
+    def __init__(self, name="rake", priority=50):
         super().__init__(name, priority)
 
     def transform(self, utterances, context=None):
