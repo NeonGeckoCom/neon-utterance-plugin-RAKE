@@ -26,8 +26,8 @@ from RAKEkeywords import Rake
 from neon_transformers import UtteranceTransformer
 
 
-class RAKETagger(UtteranceTransformer):
-    def __init__(self, name="rake", priority=50):
+class RAKEExtractor(UtteranceTransformer):
+    def __init__(self, name="RAKE", priority=50):
         super().__init__(name, priority)
 
     def transform(self, utterances, context=None):

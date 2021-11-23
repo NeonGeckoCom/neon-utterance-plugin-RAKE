@@ -2,7 +2,7 @@
 from setuptools import setup
 
 
-PLUGIN_ENTRY_POINT = 'neon_utterance_RAKE_plugin=neon_utterance_RAKE_plugin:RAKETagger'
+PLUGIN_ENTRY_POINT = 'neon_utterance_RAKE_plugin=neon_utterance_RAKE_plugin:RAKEExtractor'
 setup(
     name='neon_utterance_RAKE_plugin',
     version='0.0.1',
