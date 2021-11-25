@@ -24,9 +24,12 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from RAKEkeywords import Rake
 from neon_transformers import UtteranceTransformer
+from neon_transformers.tasks import UtteranceTask
 
 
 class RAKEExtractor(UtteranceTransformer):
+    task = UtteranceTask.KEYWORD_EXTRACTION
+
     def __init__(self, name="RAKE", priority=50):
         super().__init__(name, priority)
 
