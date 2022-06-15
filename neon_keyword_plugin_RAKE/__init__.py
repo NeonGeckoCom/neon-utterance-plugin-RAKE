@@ -23,25 +23,17 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from RAKEkeywords import Rake
-from neon_transformers import UtteranceTransformer
-from neon_transformers.tasks import UtteranceTask
+from ovos_plugin_manager.keywords import KeywordExtractor
 
 
-class RAKEExtractor(UtteranceTransformer):
-    task = UtteranceTask.KEYWORD_EXTRACTION
+class RAKEExtractor(KeywordExtractor):
 
-    def __init__(self, name="RAKE", priority=50):
-        super().__init__(name, priority)
-
-    def transform(self, utterances, context=None):
-        keywords = []
-        context = context or {}
-        lang = context.get("lang", "en-us")
-        for utterance in utterances:
-            # extract keywords
-            rake = Rake(lang)
-            keywords += rake.extract_keywords(utterance)
-
-        # return unchanged utterances + data
-        return utterances, {"rake_keywords": keywords}
+    def extract(self, text, lang):
+        # extract keywords
+        rake = Rake(lang)
+        keywords = rake.extract_keywords(text)
+        # normalize scores 0.0 to 1.0
+        total = sum(s[1] for s in keywords)
+        scores = {k[0]: k[1]/total for k in keywords}
+        return scores
 

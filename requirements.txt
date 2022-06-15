@@ -1,2 +1,2 @@
-neon_transformers
+ovos-plugin-manager
 RAKEkeywords~=0.2.0
